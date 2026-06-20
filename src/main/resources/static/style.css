@@ -1,0 +1,156 @@
+.bg-colour-bakerloo {
+    background-color: rgb(178, 99, 0);
+}
+
+.bg-colour-central {
+    background-color: rgb(220, 36, 31);
+}
+
+.bg-colour-circle {
+    background-color: rgb(255, 200, 10);
+}
+
+.bg-colour-district {
+    background-color: rgb(0, 125, 50);
+}
+
+.bg-colour-hammersmith-city {
+    background-color: rgb(245, 137, 166);
+}
+
+.bg-colour-jubilee {
+    background-color: rgb(131, 141, 147);
+}
+
+.bg-colour-metropolitan {
+    background-color: rgb(155, 0, 88);
+}
+
+.bg-colour-northern {
+    background-color: rgb(0, 0, 0);
+}
+
+.bg-colour-piccadilly {
+    background-color: rgb(0, 25, 168);
+}
+
+.bg-colour-victoria {
+    background-color: rgb(3, 155, 229);
+}
+
+.bg-colour-waterloo-city {
+    background-color: rgb(118, 208, 189);
+}
+
+.border-colour-bakerloo {
+    border-color: rgb(178, 99, 0);
+}
+
+.border-colour-central {
+    border-color: rgb(220, 36, 31);
+}
+
+.border-colour-circle {
+    border-color: rgb(255, 200, 10);
+}
+
+.border-colour-district {
+    border-color: rgb(0, 125, 50);
+}
+
+.border-colour-hammersmith-city {
+    border-color: rgb(245, 137, 166);
+}
+
+.border-colour-jubilee {
+    border-color: rgb(131, 141, 147);
+}
+
+.border-colour-metropolitan {
+    border-color: rgb(155, 0, 88);
+}
+
+.border-colour-northern {
+    border-color: rgb(0, 0, 0);
+}
+
+.border-colour-piccadilly {
+    border-color: rgb(0, 25, 168);
+}
+
+.border-colour-victoria {
+    border-color: rgb(3, 155, 229);
+}
+
+.border-colour-waterloo-city {
+    border-color: rgb(118, 208, 189);
+}
+
+.text-colour-bakerloo {
+    color: rgb(178, 99, 0);
+}
+
+.text-colour-central {
+    color: rgb(220, 36, 31);
+}
+
+.text-colour-circle {
+    color: rgb(255, 200, 10);
+}
+
+.text-colour-district {
+    color: rgb(0, 125, 50);
+}
+
+.text-colour-hammersmith-city {
+    color: rgb(245, 137, 166);
+}
+
+.text-colour-jubilee {
+    color: rgb(131, 141, 147);
+}
+
+.text-colour-metropolitan {
+    color: rgb(155, 0, 88);
+}
+
+.text-colour-northern {
+    color: rgb(0, 0, 0);
+}
+
+.text-colour-piccadilly {
+    color: rgb(0, 25, 168);
+}
+
+.text-colour-victoria {
+    color: rgb(3, 155, 229);
+}
+
+.text-colour-waterloo-city {
+    color: rgb(118, 208, 189);
+}
+
+.anchor-disabled {
+    pointer-events: none;
+}
+
+a {
+    cursor: pointer;
+}
+
+.span-dot {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    margin-inline: 0.15rem;
+}
+
+.container-md {
+    max-width: 512px;
+}
+
+.spinner-border {
+    width: 5rem;
+    height: 5rem;
+}

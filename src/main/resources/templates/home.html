@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home | LU Journey Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+  </head>
+  <body>
+    <div id="div-greyout" class="bg-secondary position-fixed w-100 h-100 z-2 opacity-50" hidden="hidden"></div>
+    <div id="div-spinner" class="position-fixed top-50 start-50 translate-middle z-3" hidden="hidden">
+        <div class="spinner-border" role="status"></div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid d-flex">
+        <div class="justify-content-start">
+          <a class="navbar-brand" href="/">LU Journey Planner</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <span class="navbar-text pe-1">
+            <i class="bi bi-exclamation-triangle text-danger"></i>
+          </span>
+          <span class="navbar-text pe-1" id="span-disruption-dots">
+            <!-- Disruption dots go here -->
+            %s
+          </span>
+          <span class="navbar-text pe-2" id="span-disruption-description">
+              <!-- Disruption descriptions go here -->
+              %s
+          </span>
+          <a class="nav-link link-info" id="anchor-disruption-update">Update...</a>
+        </div>
+      </div>
+    </nav>
+    <form class="container-md mt-4">
+        <div class="mb-3">
+            <label for="input-origin" class="form-label">Origin</label>
+            <input type="search" class="form-control" id="input-origin" placeholder="Search...">
+        </div>
+        <div id="div-origin-results-placeholder"></div>
+        <div class="mb-3">
+            <label for="input-destination" class="form-label">Destination</label>
+            <input type="search" class="form-control" id="input-destination" placeholder="Search...">
+        </div>
+        <div id="div-destination-results-placeholder"></div>
+        <button type="button" class="btn btn-success btn-lg" id="button-submit">Submit</button>
+        <button type="button" class="btn btn-secondary btn-lg" id="button-switch-direction">
+            <i class="bi bi-arrow-down-up"></i>
+        </button>
+        <div id="div-alert-placeholder"></div>
+    </form>
+    <script src="/static/home.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

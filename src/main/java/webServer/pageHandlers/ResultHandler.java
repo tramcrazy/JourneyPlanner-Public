@@ -10,11 +10,8 @@ import webServer.HelperLibrary;
 import webServer.HttpRequestMethod;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -87,13 +84,11 @@ public class ResultHandler extends PageHandler {
 
         String pageHtml;
         try {
-            URL pageURL = getClass().getClassLoader().getResource("templates/result.html");
-            assert pageURL != null;
-            pageHtml = new String(Files.readAllBytes(Paths.get(pageURL.toURI())));
+            InputStream fileStream = getClass().getResourceAsStream("/templates/result.html");
+            assert fileStream != null;
+            pageHtml = new String(fileStream.readAllBytes());
         } catch (IOException e) {
             throw new RuntimeException("An error occurred while trying to read the template HTML. Perhaps the file doesn't exist.");
-        } catch (URISyntaxException e) {
-            throw new RuntimeException("An error occurred - URI syntax issue.");
         }
 
         pageHtml = pageHtml.formatted(disruptionHtml[0],
@@ -128,13 +123,11 @@ public class ResultHandler extends PageHandler {
         String pageHtml;
 
         try {
-            URL pageURL = getClass().getClassLoader().getResource("templates/resultError.html");
-            assert pageURL != null;
-            pageHtml = new String(Files.readAllBytes(Paths.get(pageURL.toURI())));
+            InputStream fileStream = getClass().getResourceAsStream("/templates/resultError.html");
+            assert fileStream != null;
+            pageHtml = new String(fileStream.readAllBytes());
         } catch (IOException e) {
             throw new RuntimeException("An error occurred while trying to read the template HTML. Perhaps the file doesn't exist.");
-        } catch (URISyntaxException e) {
-            throw new RuntimeException("An error occurred - URI syntax issue.");
         }
 
         pageHtml = pageHtml.formatted(header, explanation);
@@ -215,13 +208,11 @@ public class ResultHandler extends PageHandler {
         String templateHtml;
 
         try {
-            URL templateURL = getClass().getClassLoader().getResource("templates/standardCard.html");
-            assert templateURL != null;
-            templateHtml = new String(Files.readAllBytes(Paths.get(templateURL.toURI())));
+            InputStream fileStream = getClass().getResourceAsStream("/templates/standardCard.html");
+            assert fileStream != null;
+            templateHtml = new String(fileStream.readAllBytes());
         } catch (IOException e) {
             throw new RuntimeException("An error occurred while trying to read the template HTML. Perhaps the file doesn't exist.");
-        } catch (URISyntaxException e) {
-            throw new RuntimeException("An error occurred - URI syntax issue.");
         }
 
         String lineName = dbManager.getLineName(stage.lineId());
@@ -283,13 +274,11 @@ public class ResultHandler extends PageHandler {
         String templateHtml;
 
         try {
-            URL templateURL = getClass().getClassLoader().getResource("templates/changeCard.html");
-            assert templateURL != null;
-            templateHtml = new String(Files.readAllBytes(Paths.get(templateURL.toURI())));
+            InputStream fileStream = getClass().getResourceAsStream("/templates/changeCard.html");
+            assert fileStream != null;
+            templateHtml = new String(fileStream.readAllBytes());
         } catch (IOException e) {
             throw new RuntimeException("An error occurred while trying to read the template HTML. Perhaps the file doesn't exist.");
-        } catch (URISyntaxException e) {
-            throw new RuntimeException("An error occurred - URI syntax issue.");
         }
 
         String firstLineName = dbManager.getLineName(firstStage.lineId());

@@ -3,11 +3,8 @@ package webServer.defaultHandlers;
 import webServer.pageHandlers.PageHandler;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static webServer.HelperLibrary.*;
 
@@ -39,13 +36,11 @@ public class ErrorHandler extends PageHandler {
     private String generateHtml() {
         String templateHtml;
         try {
-            URL templateURL = getClass().getClassLoader().getResource("templates/tortoise/error.html");
-            assert templateURL != null;
-            templateHtml = new String(Files.readAllBytes(Paths.get(templateURL.toURI())));
+            InputStream fileStream = getClass().getResourceAsStream("/templates/tortoise/error.html");
+            assert fileStream != null;
+            templateHtml = new String(fileStream.readAllBytes());
         } catch (IOException e) {
             throw new RuntimeException("An error occurred while trying to read the template HTML. Perhaps the file doesn't exist.");
-        } catch (URISyntaxException e) {
-            throw new RuntimeException("An error occurred - URI syntax issue.");
         }
         return templateHtml.formatted(errorCode, errorCode, chooseMessage(errorCode), url);
     }

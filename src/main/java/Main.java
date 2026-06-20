@@ -14,15 +14,21 @@ public class Main {
         Dotenv dotenv = Dotenv.load();
         DbManager dbManager = new DbManager("journeyPlannerDatabase.db", dotenv);
 
-        // Download and save data for lines, disruptions, stations, timetables - not always necessary but should really be run at least daily.
-//        dbManager.fillLinesAndRouteSectionsTables();
-//        dbManager.updateDisruptions();
-//        dbManager.fillStationAndTimetableTables();
-
-        StationGraph stationGraph = new StationGraph(dbManager);
-        stationGraph.fillMap();
-        startServer(dbManager, stationGraph);
-
+        if (args.length > 0) {
+            if (args[0].equals("update")) {
+                dbManager.fillLinesAndRouteSectionsTables();
+                dbManager.updateDisruptions();
+                dbManager.fillStationAndTimetableTables();
+            } else if (args[0].equals("run")) {
+                StationGraph stationGraph = new StationGraph(dbManager);
+                stationGraph.fillMap();
+                startServer(dbManager, stationGraph);
+            } else {
+                System.out.println("Unknown command. Valid commands are update (to update the database) or run (to start the server).");
+            }
+        } else {
+            System.out.println("No command provided. Valid commands are update (to update the database) or run (to start the server).");
+        }
     }
 
     public static void startServer(DbManager dbManager, StationGraph stationGraph) {

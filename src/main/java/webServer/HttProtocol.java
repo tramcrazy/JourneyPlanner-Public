@@ -4,8 +4,7 @@ import webServer.defaultHandlers.ErrorHandler;
 import webServer.pageHandlers.PageHandler;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.io.InputStream;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -157,15 +156,13 @@ public class HttProtocol {
         String mimeType;
 
         try {
-            URL fileUrl = getClass().getClassLoader().getResource(url.substring(1));
-            assert fileUrl != null;
-            filePath = Paths.get(fileUrl.toURI());
-            staticFile = Files.readAllBytes(filePath);
+            InputStream fileStream = getClass().getResourceAsStream(url);
+            assert fileStream != null;
+            staticFile = fileStream.readAllBytes();
+            filePath = Paths.get(url);
             mimeType = Files.probeContentType(filePath);
         } catch (IOException | InvalidPathException e) {
             return generateError(404, url);
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
         }
 
         System.out.println("Serving static file from path " + filePath + " of type " + mimeType);

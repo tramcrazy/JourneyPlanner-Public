@@ -47,7 +47,7 @@ public class DataGrabber {
         String uri = apiRoot + "Journey/JourneyResults/" + originator + "/to/" + destination + "?mode=tube&date=" + date + "&time=" + time + "&app_key=" + apiKey;
 
         String responseJson = makeHttpRequest(uri);
-        JourneyResponse journeyResponse = null;
+        JourneyResponse journeyResponse;
 
         try {
             journeyResponse = mapper.readValue(responseJson, JourneyResponse.class);
@@ -118,7 +118,7 @@ public class DataGrabber {
         HttpResponse<String> response = null;
 
         while (serverError) {
-            System.out.println("Trying to send request to " + uri);
+            System.out.println("Trying to send request to " + uri.split("\\?")[0]);
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(uri)).build();
 
             try {
@@ -131,7 +131,7 @@ public class DataGrabber {
                 throw new RuntimeException("Error while trying to fetch data from TfL - got null response. The API may be offline.");
             } else if (response.statusCode() != 200) {
                 if (response.statusCode() == 404) {
-                    System.out.println("Non-critical error while trying to fetch TfL data - data unexpectedly unavailable at endpoint " + uri);
+                    System.out.println("Non-critical error while trying to fetch TfL data - data unexpectedly unavailable at endpoint " + uri.split("\\?")[0]);
                     return null;
                 }
                 System.out.println("Error while trying to fetch data from TfL - got unexpected HTTP response code " + response.statusCode());
